@@ -1,0 +1,130 @@
+/* === Fondo celeste degradado animado rápido === */
+body.login-illustration-bg {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: linear-gradient(-45deg, #8BC2D6, #F6FAAF, #4fc3f7, #3D2BFF);
+  background-size: 400% 400%;
+  animation: animateCeleste 8s linear infinite; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animación del fondo */
+@keyframes animateCeleste {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+/* Contenedor principal */
+.login-illustration-container {
+  display: flex;
+  width: 90%;
+  max-width: 1100px;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(0,0,0,0.1);
+}
+
+/* Panel izquierdo */
+.login-illustration-left {
+  flex: 1;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.illustration-img {
+  width: 100%;
+  max-width: 350px;
+}
+
+/* Panel derecho */
+.login-illustration-right {
+  flex: 1;
+  background: #007bff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-form-box {
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+/* Encabezado centrado */
+.welcome-title {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+/* Inputs */
+.login-form-box .form-control {
+  height: 45px;
+  font-size: 0.95rem;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 50px;
+  border: none;
+}
+
+.login-form-box label {
+  font-weight: 500;
+  color: #fff;
+}
+
+/* Botón */
+.login-form-box .btn {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 50px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.login-form-box .btn:hover {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+/* Mensaje de error */
+.alert {
+  font-size: 0.9rem;
+  border-radius: 50px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .login-illustration-container {
+    flex-direction: column;
+    border-radius: 0;
+    height: 100vh;
+  }
+
+  .login-illustration-left,
+  .login-illustration-right {
+    flex: none;
+    width: 100%;
+    padding: 30px;
+  }
+
+  .illustration-img {
+    max-width: 220px;
+  }
+}

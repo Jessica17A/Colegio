@@ -1,0 +1,29 @@
+<h2>Registro de Cursos</h2>
+<form id="formCurso">
+  <input type="text" name="nombre" placeholder="Nombre del curso" required>
+  
+  <select name="grado" required id="gradoSelect">
+    <option value="">Selecciona un grado</option>
+  </select>
+
+  <select name="carrera" required id="carreraSelect">
+    <option value="">Selecciona una carrera</option>
+  </select>
+
+  <button type="submit">Guardar</button>
+</form>
+
+<table id="tablaCursos">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Curso</th>
+      <th>Grado</th>
+      <th>Carrera</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<script src="../../lib/js/curso.js"></script>
