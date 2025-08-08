@@ -1,0 +1,39 @@
+/* Color bonito para las carpetas */
+#arbolSistema .fa-folder,
+#arbolSistema .fa-folder-open {
+  color: #caa84a; /* dorado; cámbialo si quieres */
+}
+
+/* Estructura tipo árbol con líneas */
+#arbolSistema .tree-root,
+#arbolSistema .tree-root ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 18px; /* sangría visual */
+  position: relative;
+}
+
+#arbolSistema .tree-root ul {
+  border-left: 1px dotted #cfcfcf; /* línea vertical */
+}
+
+#arbolSistema .tree-root li {
+  margin: 4px 0;
+  position: relative;
+}
+
+#arbolSistema .tree-root li::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 10px;
+  width: 12px;
+  border-top: 1px dotted #cfcfcf; /* línea horizontal */
+}
+
+#arbolSistema .label {
+  cursor: pointer;
+  user-select: none;
+}
+
+.hidden { display: none; }

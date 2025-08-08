@@ -8,28 +8,24 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <!-- FontAwesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  <!-- Estilos personalizados -->
+  <!-- Estilos -->
   <style>
     body {
-      background-color: #f2f5fa;
+      background: #f2f5fa;
       padding: 2rem;
     }
-
     .card-title i {
       color: #0d6efd;
     }
-
     .form-control:focus, .form-select:focus {
-      box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+      box-shadow: 0 0 0 .2rem rgba(13,110,253,.25);
     }
-
     #arbolSistema ul {
-      list-style-type: none;
+      list-style: none;
       padding-left: 1rem;
     }
-
-    #arbolSistema i {
-      margin-right: 6px;
+    #arbolSistema li {
+      margin: .15rem 0;
     }
   </style>
 </head>
@@ -37,7 +33,8 @@
 <body>
   <div class="container-fluid">
     <div class="row g-4">
-      <!-- Columna Izquierda: Estructura -->
+      
+      <!-- Árbol -->
       <div class="col-md-6">
         <div class="card shadow-sm p-4">
           <h4 class="card-title mb-3">
@@ -47,7 +44,7 @@
         </div>
       </div>
 
-      <!-- Columna Derecha: Formulario -->
+      <!-- Formulario -->
       <div class="col-md-4">
         <div class="card shadow-sm p-4">
           <h4 class="card-title mb-3">
@@ -55,40 +52,53 @@
           </h4>
 
           <form id="formEstructura">
-            <div class="form-group">
-                <label for="tipo">Tipo</label>
-                <select id="tipo" class="form-control" name="tipo" required>
+            
+            <div class="mb-2">
+              <label for="tipo" class="form-label">Tipo</label>
+              <select id="tipo" class="form-control" required>
                 <option value="">Seleccione tipo</option>
                 <option value="area">Área</option>
                 <option value="modulo">Módulo</option>
-                <option value="submodulo">Submódulo</option>
-                <option value="subsubmodulo">Sub-Submódulo</option>
-                </select>
+                <option value="submodulo">Submódulo</option>              
+              </select>
             </div>
 
-            <div class="form-group" id="grupoModulo" style="display:none;">
-                <label for="modulo">Módulo</label>
-                <select id="modulo" class="form-control"></select>
+            <div class="mb-2" id="grupoModulo" style="display:none;">
+              <label for="modulo" class="form-label">Módulo</label>
+              <select id="modulo" class="form-control"></select>
             </div>
 
-            <div class="form-group" id="grupoPadre">
-                <label for="padre">Padre</label>
-                <select id="padre" class="form-control"></select>
+            <div class="mb-2" id="grupoArea" style="display:none;">
+              <label for="area" class="form-label">Área</label>
+              <select id="area" class="form-control"></select>
             </div>
 
-            <div class="form-group">
-                <label for="nombre">Nombre</label>
-                <input type="text" id="nombre" class="form-control" required />
+            <div class="mb-2" id="grupoPadre">
+              <label for="padre" class="form-label">Padre</label>
+              <select id="padre" class="form-control"></select>
             </div>
 
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="hijos" />
-                <label class="form-check-label" for="hijos">¿Tiene hijos?</label>
+            <div class="mb-2">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" id="nombre" class="form-control" required />
             </div>
 
-            <button type="submit" class="btn btn-primary mt-2">Crear</button>
-            </form>
+            <!-- Ícono SIEMPRE visible -->
+            <div class="mb-2" id="grupoIcono">
+              <label for="icono" class="form-label">Ícono (FontAwesome)</label>
+              <input type="text" id="icono" class="form-control" placeholder="Ej: fas fa-cubes" />
+              <div class="form-text">Ejemplos: <code>fas fa-users</code>, <code>fas fa-gear</code></div>
+            </div>
 
+            <!-- Indicador -->
+            <div class="form-check mb-3" id="grupoIndicador" >
+              <input type="checkbox" class="form-check-input" id="indicador" />
+              <label class="form-check-label" for="indicador">¿Este submódulo tendrá hijos?</label>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Crear</button>
+          </form>
 
         </div>
       </div>
@@ -98,8 +108,7 @@
   <!-- Bootstrap JS + jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Tu archivo JS -->
   <script src="lib/js/Config_Areas.js"></script>
+
 </body>
 </html>
