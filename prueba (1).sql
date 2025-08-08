@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-08-2025 a las 00:22:25
+-- Tiempo de generación: 09-08-2025 a las 00:20:53
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -39,7 +39,9 @@ CREATE TABLE `areas` (
 --
 
 INSERT INTO `areas` (`IDAREA`, `CODIGO_AREA`, `NOMBRE_AREA`, `ESTADO`) VALUES
-(1, 'CONFIG3', 'Configuración4', 1);
+(1, 'CONFIG3', 'Configuración4', 1),
+(2, 'jE0PCwze1M', 'Administración', 1),
+(4, 'Nv95W1J2Si', 'Testing', 1);
 
 -- --------------------------------------------------------
 
@@ -88,16 +90,21 @@ CREATE TABLE `modulos` (
   `CODIGO_MODULO` varchar(20) NOT NULL,
   `NOMBRE_MODULO` varchar(100) NOT NULL,
   `ICONO_MODULO` varchar(50) DEFAULT NULL,
-  `ESTADO` tinyint(1) DEFAULT 1
+  `ESTADO` tinyint(1) DEFAULT 1,
+  `INDICADOR` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `modulos`
 --
 
-INSERT INTO `modulos` (`IDMODULO`, `FKAREA`, `CODIGO_MODULO`, `NOMBRE_MODULO`, `ICONO_MODULO`, `ESTADO`) VALUES
-(1, 1, 'SEGURIDAD', 'Seguridad', 'fas fa-user-shield', 1),
-(2, 1, 'ADMINISTRACION', 'Configuración', 'fa fa-sitemap', 1);
+INSERT INTO `modulos` (`IDMODULO`, `FKAREA`, `CODIGO_MODULO`, `NOMBRE_MODULO`, `ICONO_MODULO`, `ESTADO`, `INDICADOR`) VALUES
+(1, 1, 'PRUEBAS', 'Pruebas', 'fas fa-user-shield', 1, 1),
+(2, 1, 'conf', 'Configuración', 'fa fa-sitemap', 1, 1),
+(3, 2, 'DJFJ34', 'DTI', 'fa-sitemap', 1, 0),
+(4, 4, 'P5RjflbsM3', 'Testing1', 'fa fa-laptop', 1, 1),
+(5, 4, 'irNBfVcPbQ', 'TECNOLOGIA', 'fa-sitemap', 1, 0),
+(6, 2, '2lTmzwdha3', 'PRUEBAS', 'fa fa-credit-card', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -121,33 +128,7 @@ CREATE TABLE `submodulos` (
 INSERT INTO `submodulos` (`IDSUBMODULO`, `FKMODULO`, `CODIGO_SUBMODULO`, `NOMBRE_SUBMODULO`, `VISTA_SUBMODULO`, `ESTADO`) VALUES
 (1, 1, 'GEST_USUARIOS', 'Gestión de Usuarios', 'gestion_usuarios', 1),
 (2, 2, 'Areas', 'Areas', 'Config_Areas', 1),
-(3, 2, 'riTv7yNzoF', 'Jessica', 'CONFIGURACIóN_JESSICA', 1),
-(4, 1, 'ZAXEJ7P2He', 'NAYELI1', NULL, 1),
-(5, 2, 'nKYDEkSB7r', 'DTI', 'hola', 1);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `subsubmodulos`
---
-
-CREATE TABLE `subsubmodulos` (
-  `IDSUBSUBMODULO` int(11) NOT NULL,
-  `FK_SUBMODULO` int(11) DEFAULT NULL,
-  `CODIGO_SUBSUBMODULO` varchar(100) DEFAULT NULL,
-  `NOMBRE_SUBSUBMODULO` varchar(100) DEFAULT NULL,
-  `VISTA_SUBSUBMODULO` varchar(100) DEFAULT NULL,
-  `ESTADO` tinyint(4) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `subsubmodulos`
---
-
-INSERT INTO `subsubmodulos` (`IDSUBSUBMODULO`, `FK_SUBMODULO`, `CODIGO_SUBSUBMODULO`, `NOMBRE_SUBSUBMODULO`, `VISTA_SUBSUBMODULO`, `ESTADO`) VALUES
-(2, 1, 'REP_USUARIOS', 'Reporte de Usuarios', 'reporte_usuarios', 1),
-(3, 1, 'IZH2k0QKBs', 'PRUEBAS', 'IZH2k0QKBs', 1),
-(4, 1, 'ri2JyOxPZL', 'TESTING', 'MODULO_TESTING', 1);
+(3, 4, 'rnIo5qcbTS', 'Testing2', 'TESTING1_TESTING2', 1);
 
 -- --------------------------------------------------------
 
@@ -212,13 +193,6 @@ ALTER TABLE `submodulos`
   ADD KEY `FK_SUBMODULOS_MODULO` (`FKMODULO`);
 
 --
--- Indices de la tabla `subsubmodulos`
---
-ALTER TABLE `subsubmodulos`
-  ADD PRIMARY KEY (`IDSUBSUBMODULO`),
-  ADD KEY `FK_SUBMODULO` (`FK_SUBMODULO`);
-
---
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -233,7 +207,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `areas`
 --
 ALTER TABLE `areas`
-  MODIFY `IDAREA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IDAREA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `carrera`
@@ -257,19 +231,13 @@ ALTER TABLE `grado`
 -- AUTO_INCREMENT de la tabla `modulos`
 --
 ALTER TABLE `modulos`
-  MODIFY `IDMODULO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IDMODULO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `submodulos`
 --
 ALTER TABLE `submodulos`
-  MODIFY `IDSUBMODULO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT de la tabla `subsubmodulos`
---
-ALTER TABLE `subsubmodulos`
-  MODIFY `IDSUBSUBMODULO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IDSUBMODULO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -299,12 +267,6 @@ ALTER TABLE `modulos`
 --
 ALTER TABLE `submodulos`
   ADD CONSTRAINT `FK_SUBMODULOS_MODULO` FOREIGN KEY (`FKMODULO`) REFERENCES `modulos` (`IDMODULO`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `subsubmodulos`
---
-ALTER TABLE `subsubmodulos`
-  ADD CONSTRAINT `subsubmodulos_ibfk_1` FOREIGN KEY (`FK_SUBMODULO`) REFERENCES `submodulos` (`IDSUBMODULO`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

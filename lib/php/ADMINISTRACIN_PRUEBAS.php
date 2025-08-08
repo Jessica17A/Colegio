@@ -1,0 +1,1 @@
+<!-- Archivo php generado para ADMINISTRACIN_PRUEBAS -->
