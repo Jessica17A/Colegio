@@ -143,7 +143,7 @@ switch ($a0) {
         echo json_encode(['success'=>true, 'codigo'=>$codigo]);
         break;
 
-      case 'modulo':
+     case 'modulo':
         if (!$fk) { echo json_encode(['success'=>false,'message'=>'Seleccione un Área (padre).']); break; }
 
         // Nombre del área (para prefijo de archivos)
@@ -152,19 +152,21 @@ switch ($a0) {
 
         // Insertar módulo
         write("INSERT INTO MODULOS (FKAREA, CODIGO_MODULO, NOMBRE_MODULO, ICONO_MODULO, INDICADOR, ESTADO)
-               VALUES (?, ?, ?, ?, ?, 1)",
+              VALUES (?, ?, ?, ?, ?, 1)",
               [$fk, $codigo, $nombre, $icono, $indicador]);
 
-        // Si es módulo hoja, generar archivos AREA_MODULO
+        // Si es módulo hoja, generar archivos y GUARDAR VISTA_MODULO
         if ($indicador === 0) {
           $vista = normalizarVista($nombreArea) . '_' . normalizarVista($nombre);
           crearArchivosVista($vista);
-          // Si tienes columna VISTA_MODULO, aquí podrías guardarla
-          // write("UPDATE MODULOS SET VISTA_MODULO=? WHERE CODIGO_MODULO=?", [$vista, $codigo]);
+
+          // 👇 GUARDA el nombre de la vista en la DB para que el front la cargue
+          write("UPDATE MODULOS SET VISTA_MODULO=? WHERE CODIGO_MODULO=?", [$vista, $codigo]);
         }
 
         echo json_encode(['success'=>true, 'codigo'=>$codigo]);
         break;
+
 
       case 'submodulo':
         if (!$fk) { echo json_encode(['success'=>false,'message'=>'Seleccione un Módulo (padre).']); break; }
@@ -183,9 +185,9 @@ switch ($a0) {
         crearArchivosVista($vista);
 
         // Insertar submódulo
-        write("INSERT INTO SUBMODULOS (FKMODULO, CODIGO_SUBMODULO, NOMBRE_SUBMODULO, VISTA_SUBMODULO, ESTADO)
+        write("INSERT INTO SUBMODULOS (FKMODULO, CODIGO_SUBMODULO, NOMBRE_SUBMODULO, VISTA_SUBMODULO, ICONO, ESTADO)
                VALUES (?, ?, ?, ?, 1)",
-             [$fk, $codigo, $nombre, $vista]);
+             [$fk, $codigo, $nombre, $vista, $icono]);
 
         echo json_encode(['success'=>true, 'codigo'=>$codigo, 'vista'=>$vista]);
         break;

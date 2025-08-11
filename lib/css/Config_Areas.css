@@ -1,7 +1,7 @@
-/* Color bonito para las carpetas */
+/* Color  para las carpetas */
 #arbolSistema .fa-folder,
 #arbolSistema .fa-folder-open {
-  color: #caa84a; /* dorado; cámbialo si quieres */
+  color: #caa84a; /* dorado;  */
 }
 
 /* Estructura tipo árbol con líneas */
@@ -37,3 +37,83 @@
 }
 
 .hidden { display: none; }
+
+
+ body {
+      background: #f2f5fa;
+      padding: 2rem;
+    }
+    .card-title i {
+      color: #0d6efd;
+    }
+    .form-control:focus, .form-select:focus {
+      box-shadow: 0 0 0 .2rem rgba(13,110,253,.25);
+    }
+    #arbolSistema ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    #arbolSistema li {
+      margin: .15rem 0;
+    }
+
+
+  /* Contenedor del árbol */
+  #arbolSistema { margin-top: .5rem; }
+
+  /* Espacio extra entre Áreas (primer nivel) */
+  #arbolSistema > ul > li.area-node { 
+    margin: .6rem 0 1rem; 
+    padding-bottom: .25rem; 
+    border-bottom: 1px dashed #e5e7eb;
+  }
+
+  /* Estilos generales de lista
+  #arbolSistema ul { list-style: none; padding-left: 1.1rem; }
+  #arbolSistema li { margin: .2rem 0; }
+
+  /* Badges por tipo */
+  /* .badge-area      { background:#5daba1; }   /* azul */
+  /* .badge-modulo    { background:#5D8EAB; }   verde */
+  /* .badge-submodulo { background:#5DAB7A; }   gris */ 
+
+  /* Línea e indentación visual */
+  /* .node-line { color:#9aa0a6; margin-right:.35rem; } */ 
+/* === Leyenda con texto === */
+.badge-area {
+  background-color: #0d6efd; /* azul */
+  color: white;
+}
+.badge-modulo {
+  background-color: #198754; /* verde */
+  color: white;
+}
+.badge-submodulo {
+  background-color: #6c757d; /* gris */
+  color: white;
+}
+
+/* === Puntitos en el árbol === */
+.dot-area, .dot-modulo, .dot-submodulo {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.dot-area {
+  background-color: #0d6efd; /* azul */
+}
+.dot-modulo {
+  background-color: #198754; /* verde */
+}
+.dot-submodulo {
+  background-color: #6c757d; /* gris */
+}
+
+
+
+
+
+

@@ -1,46 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Estructura del Sistema</title>
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- FontAwesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  <!-- Estilos -->
-  <style>
-    body {
-      background: #f2f5fa;
-      padding: 2rem;
-    }
-    .card-title i {
-      color: #0d6efd;
-    }
-    .form-control:focus, .form-select:focus {
-      box-shadow: 0 0 0 .2rem rgba(13,110,253,.25);
-    }
-    #arbolSistema ul {
-      list-style: none;
-      padding-left: 1rem;
-    }
-    #arbolSistema li {
-      margin: .15rem 0;
-    }
-  </style>
-</head>
 
-<body>
   <div class="container-fluid">
     <div class="row g-4">
       
       <!-- Árbol -->
       <div class="col-md-6">
         <div class="card shadow-sm p-4">
-          <h4 class="card-title mb-3">
-            <i class="fas fa-folder text-warning me-2"></i>Estructura del Sistema
-          </h4>
+        <h1 class="card-title mb-3 text-center titulo-arbol">
+          ESTRUCTURA DEL SISTEMA
+        </h1>
+
+
+          <div class="text-center mb-3">
+            <span class="badge badge-area px-3 py-2 fs-6">Área</span>
+            <span class="badge badge-modulo px-3 py-2 fs-6">Módulo</span>
+            <span class="badge badge-submodulo px-3 py-2 fs-6">Submódulo</span>
+          </div>
+
           <div id="arbolSistema"></div>
+
         </div>
       </div>
 
@@ -105,10 +82,4 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS + jQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/js/Config_Areas.js"></script>
-
-</body>
-</html>
+  
