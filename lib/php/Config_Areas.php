@@ -23,7 +23,7 @@ function crearArchivosVista($vistaNombre) {
   ];
   foreach ($map as $tipo => $ruta) {
     if (!file_exists($ruta)) {
-      @file_put_contents($ruta, "<!-- Archivo {$tipo} generado para {$vistaNombre} -->");
+      @file_put_contents($ruta, "{$tipo} generado para {$vistaNombre}");
     }
   }
 }
@@ -88,19 +88,18 @@ switch ($a0) {
                       FROM MODULOS
                       WHERE ESTADO = 1");
     } elseif ($tipo === 'subsubmodulo') {
-      $result = []; // compat, ya no se usa
+      $result = []; 
     }
 
     echo json_encode($result);
     break;
 
-  /* 3) Submódulos de un módulo (compat; sin INDICADOR en SUBMODULOS) */
+  
   case 3:
     $moduloId = $_POST['modulo'] ?? null;
     if (!$moduloId) jerr('Parámetro modulo requerido.');
 
-    $result = read("
-      SELECT S.IDSUBMODULO AS id, S.NOMBRE_SUBMODULO AS nombre
+    $result = read("SELECT S.IDSUBMODULO AS id, S.NOMBRE_SUBMODULO AS nombre
       FROM SUBMODULOS S
       WHERE S.FKMODULO = ? AND S.ESTADO = 1
       ORDER BY S.NOMBRE_SUBMODULO
@@ -114,8 +113,7 @@ switch ($a0) {
     $areaId = $_POST['area'] ?? null;
     if (!$areaId) { echo json_encode([]); break; }
 
-    $result = read("
-      SELECT M.IDMODULO AS id, M.NOMBRE_MODULO AS nombre
+    $result = read("SELECT M.IDMODULO AS id, M.NOMBRE_MODULO AS nombre
       FROM MODULOS M
       WHERE M.FKAREA = ? AND M.ESTADO = 1
         AND M.INDICADOR = 1
@@ -129,9 +127,9 @@ switch ($a0) {
   case 5:
     $tipo      = $_POST['tipo'] ?? '';
     $nombre    = trim($_POST['nombre'] ?? '');
-    $fk        = $_POST['fk'] ?? null;           // padre (área para módulo; módulo para submódulo)
+    $fk        = $_POST['fk'] ?? null;         
     $icono     = trim($_POST['icono'] ?? '') ?: 'fas fa-cubes';
-    $indicador = intval($_POST['indicador'] ?? 0); // módulos: 1=contenedor, 0=hoja
+    $indicador = intval($_POST['indicador'] ?? 0); 
 
     if (!$tipo || !$nombre) { echo json_encode(['success'=>false,'message'=>'Datos incompletos']); break; }
 
@@ -171,7 +169,7 @@ switch ($a0) {
       case 'submodulo':
         if (!$fk) { echo json_encode(['success'=>false,'message'=>'Seleccione un Módulo (padre).']); break; }
 
-        // Obtener área del módulo padre (para prefijo AREA_)
+      
         $area = read("SELECT A.NOMBRE_AREA
                       FROM MODULOS M
                       JOIN AREAS A ON A.IDAREA = M.FKAREA
@@ -186,7 +184,7 @@ switch ($a0) {
 
         // Insertar submódulo
         write("INSERT INTO SUBMODULOS (FKMODULO, CODIGO_SUBMODULO, NOMBRE_SUBMODULO, VISTA_SUBMODULO, ICONO, ESTADO)
-               VALUES (?, ?, ?, ?, 1)",
+               VALUES (?, ?, ?, ?, ?, 1)",
              [$fk, $codigo, $nombre, $vista, $icono]);
 
         echo json_encode(['success'=>true, 'codigo'=>$codigo, 'vista'=>$vista]);
@@ -197,9 +195,10 @@ switch ($a0) {
         break;
     }
 
-    break; // <- IMPORTANTÍSIMO: break del case 5 (afuera del switch interno)
+    break; 
 
   default:
     jerr('a0 no soportado.');
+    jerr('a0 no para ');
     break;
 }
