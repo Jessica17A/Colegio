@@ -1,73 +1,104 @@
-<div class="container-fluid mt-3">
-  <div class="row">
-    <!-- Card Visualización -->
+<div class="container-fluid mt-4">
+
+  <div class="row g-3">
+
+    <!-- === CARD IZQUIERDA: LISTADO === -->
     <div class="col-md-8">
-      <div class="card">
-        <div class="card-header bg-primary text-white">Usuarios Registrados</div>
-        <div class="card-body">
-          <table class="table table-bordered table-striped">
-            <thead>
-              <tr>
-                <th>Nombre Completo</th>
-                <th>Usuario</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody id="tablaUsuarios"></tbody>
-          </table>
+      <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+          <span class="fw-bold">Usuarios Registrados</span>
+
+          <!-- Buscador -->
+          <input 
+            type="text" 
+            id="buscarUsuario" 
+            class="form-control form-control-sm w-50" 
+            placeholder="Buscar por nombre o usuario..."
+          >
+        </div>
+
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover table-striped mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Nombre Completo</th>
+                  <th>Usuario</th>
+                  <th>Estado</th>
+                  <th class="text-center" style="width: 120px;">Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tablaUsuarios"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Card Formulario -->
+    <!-- === CARD DERECHA: FORMULARIO === -->
     <div class="col-md-4">
-      <div class="card">
-        <div class="card-header bg-success text-white">Crear Usuario</div>
+      <div class="card shadow-sm border-0">
+        <div class="card-header bg-success text-white fw-bold">
+          Crear Usuario
+        </div>
+
         <div class="card-body">
-          <form id="formUsuario">
 
-           <div class="mb-3">
-            <label for="personaSelect" class="form-label fw-semibold">Nombre del Empleado</label>
-            <select class='form-control select2' style='width: 100%; height:100%;' id='personaSelect'></select>           
-            </select>
+          <form id="formUsuario" class="d-flex flex-column gap-3">
 
+            <!-- Empleado -->
+            <div class="mb-3">
+              <label for="personaSelect" class="form-label fw-semibold">Nombre del Empleado</label>
+              <select id="personaSelect" class="form-control select2" style="width: 100%;"></select>
           </div>
 
 
-            <div class="mb-3">
-              <label>Usuario</label>
+            <!-- Usuario generado -->
+            <div>
+              <label class="fw-semibold">Usuario</label>
               <input type="text" class="form-control" id="usuario" readonly />
             </div>
 
-            <div class="mb-3">
-              <label>Contraseña</label>
+            <!-- Contraseña -->
+            <div>
+              <label class="fw-semibold">Contraseña</label>
               <input type="password" class="form-control" id="contrasena" required />
             </div>
 
-            <button type="submit" class="btn btn-success w-100">Guardar</button>
+            <button type="submit" class="btn btn-success mt-2 w-100">
+              Guardar
+            </button>
+
           </form>
         </div>
       </div>
     </div>
+
   </div>
 
-  <!-- Modal resetear contraseña -->
+
+  <!-- === MODAL RESETEAR CONTRASEÑA === -->
   <div class="modal fade" id="modalReset" tabindex="-1">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content shadow-sm">
+
         <div class="modal-header bg-warning">
-          <h5 class="modal-title">Resetear Contraseña</h5>
+          <h5 class="modal-title fw-bold">Resetear Contraseña</h5>
         </div>
+
         <div class="modal-body">
           <input type="hidden" id="resetId">
+          <label>Nueva Contraseña</label>
           <input type="password" id="nuevaPass" class="form-control" placeholder="Nueva contraseña">
         </div>
+
         <div class="modal-footer">
           <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
           <button class="btn btn-warning" onclick="resetearConfirmado()">Confirmar</button>
         </div>
+
       </div>
     </div>
   </div>
+
 </div>

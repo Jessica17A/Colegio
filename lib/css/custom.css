@@ -1,29 +1,13 @@
-/* === Fondo celeste degradado animado rápido === */
+/* === Fondo simple profesional === */
 body.login-illustration-bg {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background: linear-gradient(-45deg, #8BC2D6, #F6FAAF, #4fc3f7, #3D2BFF);
-  background-size: 400% 400%;
-  animation: animateCeleste 8s linear infinite; 
+  background: #f4f6f9; /* Gris claro elegante */
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
-/* Animación del fondo */
-@keyframes animateCeleste {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 
 /* Contenedor principal */
 .login-illustration-container {
@@ -54,7 +38,7 @@ body.login-illustration-bg {
 /* Panel derecho */
 .login-illustration-right {
   flex: 1;
-  background: #007bff;
+  background: #007bff; /* Azul elegante */
   padding: 40px;
   display: flex;
   flex-direction: column;

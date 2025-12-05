@@ -1,7 +1,22 @@
 <?php
-// === Router sencillo: ?v=VISTA ===
-// Default
+session_start();
+
+if (!isset($_SESSION['usuario'])) {
+    header("Location: login.php");
+    exit();
+}
+
+// Si NO hay parámetro v, redirigir a la última vista usada
+if (!isset($_GET['v']) && isset($_SESSION['ultima_vista'])) {
+    header("Location: ?v=" . $_SESSION['ultima_vista']);
+    exit();
+}
+
+
 $vista = isset($_GET['v']) ? $_GET['v'] : 'DASHBOARD';
+// Guardar vista actual para recordar cuál estaba abierta
+$_SESSION['ultima_vista'] = $vista;
+
 
 // Normaliza: mayúsculas y espacios/guiones -> _
 $vista = strtoupper(trim($vista));
@@ -53,7 +68,7 @@ $php_abs = __DIR__ . "/{$php_rel}";
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4@5/bootstrap-4.min.css">
 
   <?php if (is_file($css_abs)): ?>
-    <!-- NUEVO: CSS específico de la vista actual -->
+
     <link rel="stylesheet" href="<?= $css_rel ?>?v=<?= filemtime($css_abs) ?>">
   <?php endif; ?>
 </head>
@@ -83,20 +98,22 @@ $php_abs = __DIR__ . "/{$php_rel}";
   <!-- Sidebar -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="?v=DASHBOARD" class="brand-link">
-      <img src="dist/img/AdminLTELogo.png" class="brand-image img-circle elevation-3" alt="Logo">
-      <span class="brand-text font-weight-light">TestLab</span>
+      <img src="dist/img/logo.jpg" class="brand-image img-circle elevation-3" alt="Logo">
+      <span class="brand-text font-weight-light">IMEBCOOP</span>
     </a>
 
   <div class="sidebar">
       <!-- User -->
-      <div class="user-panel mt-3 pb-3 mb-2 d-flex">
+      <!-- <div class="user-panel mt-3 pb-3 mb-2 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="">
+          <img src="dist/img/user.png" class="img-circle elevation-2" alt="">
         </div>
         <div class="info">
-          <a href="#" class="d-block">TestLab</a>
+          <a href="#" class="d-block">Usuario</a>
         </div>
-      </div>
+      </div> -->
+
+      <div class="mt-4"></div>
 
       <!-- Buscador -->
       <div id="sidebar-search" class="px-3 mb-2">

@@ -1,0 +1,12 @@
+.modulo-box {
+  padding: 12px;
+  background: #f1f5ff;
+  border-left: 4px solid #0d6efd;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+.submodulo-item {
+  padding-left: 30px;
+  margin: 4px 0;
+}

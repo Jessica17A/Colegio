@@ -30,7 +30,7 @@ switch ($action) {
 
   // Cargar empleados para el select
   case 2:
-    $personas = read("SELECT ID_SEG_DATES_PERSON as id, NOMBRE, APELLIDO FROM Seg_Dates_Person");
+    $personas = read("SELECT ID_SEG_DATES_PERSON as id, NOMBRE, APELLIDO FROM Seg_Dates_Person WHERE ESTADO = 0" );
     echo json_encode($personas);
     break;
 
@@ -68,5 +68,6 @@ switch ($action) {
   default:
     echo json_encode(["success" => false, "mensaje" => "Acción no válida"]);
     break;
+    
 }
 ?>
